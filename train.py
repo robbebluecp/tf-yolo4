@@ -3,15 +3,6 @@ training part.
 this is the entrance for training
 """
 
-# from tensorflow.compat.v1 import ConfigProto
-# from tensorflow.compat.v1 import InteractiveSession
-#
-#
-# config = ConfigProto()
-# config.gpu_options.allow_growth = True
-# session = InteractiveSession(config=config)
-
-
 import loss
 import config
 import models
@@ -61,13 +52,12 @@ g_valid = data_generator(label_lines=valid_lines,
                          input_shape=config.image_input_shape,
                          anchors=config.anchors,
                          num_classes=config.num_classes)
-print('fire!')
+print('And so it begins..... To train!')
 model.fit(g_train,
           validation_data=g_valid,
           steps_per_epoch=len(label_lines) // config.batch_size,
           validation_steps=int(len(label_lines) * config.validation_split * 0.2),
           epochs=config.epochs,
-          callbacks=[tensorboard, checkpoint, reduce_lr]
-          )
+          callbacks=[tensorboard, checkpoint, reduce_lr])
 
 model_yolo.save_weights('model_train/model_train_final.weights')
