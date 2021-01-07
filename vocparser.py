@@ -36,8 +36,11 @@ class VocParser(object):
     
         bounding_boxes = list()
         for item in root.findall('./object'):
-            bbox = [child.text.strip()
-                    for child in item.xpath('./bndbox')[0].getchildren()]
+            bbox = dict()
+            for child in item.xpath('./bndbox')[0].getchildren():
+                bbox[child.tag] = str(round(float(child.text.strip())))
+            # Ensuring that the order is always xmin, ymin, xmax, ymax 
+            bbox = [bbox['xmin'], bbox['ymin'], bbox['xmax'], bbox['ymax']]
     
             obj_name = item.findtext('./name')
             # Object class-code is appended to the end of the 'bbox'
