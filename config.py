@@ -1,7 +1,7 @@
 import prepare
 
 font_path = 'font_data/FiraMono-Medium.otf'
-classes_path = 'model_data/voc_classes.txt'
+classes_path = r"D:\Datasets\asl-voc\classes.txt"
 anchors_path = 'model_data/yolo4_anchors.txt'
 classes_names = prepare.PrepareConfig().get_classes(classes_path)
 anchors = prepare.PrepareConfig().get_anchors(anchors_path)
@@ -31,4 +31,4 @@ epochs = 1000
 score = 0.5
 iou = 0.5
 
-label_path = '/opt/voc2007/labels.txt'
+label_path = r"D:\Datasets\asl-voc\train.txt"
