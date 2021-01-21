@@ -29,9 +29,9 @@ def preprocess_true_boxes(true_boxes: np.ndarray,
     boxes_xy = (true_boxes[..., 0:2] + true_boxes[..., 2:4]) // 2
 
     boxes_wh = true_boxes[..., 2:4] - true_boxes[..., 0:2]
-    # 剔除0项
+    # 剔除0项 Eliminate 0 items
     valid_mask = boxes_wh[..., 0] > 0
-    # 放缩
+    # 放缩 Zoom
 
     true_boxes[..., 0:2] = boxes_xy / input_shape[::-1]
     true_boxes[..., 2:4] = boxes_wh / input_shape[::-1]

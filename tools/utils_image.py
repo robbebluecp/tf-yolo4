@@ -573,8 +573,7 @@ class Augment:
     @staticmethod
     def resize(img: np.ndarray,
                boxes: list or np.ndarray = None,
-               new_shape=(608, 608)
-               ):
+               new_shape=(608, 608)):
         """
 
         :param img:

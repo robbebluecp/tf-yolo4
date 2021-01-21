@@ -143,3 +143,4 @@ model_data/labels.txt
 config.py
 .idea/
 .DS_Store/
+*.txt
